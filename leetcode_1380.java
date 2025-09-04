@@ -8,7 +8,6 @@ public class leetcode_1380 {
         List<Integer> res = new ArrayList<>();
 
         for (int i = 0; i < r; i++) {
-            // find min in row
             int minVal = matrix[i][0];
             int minCol = 0;
             for (int j = 1; j < c; j++) {
@@ -17,8 +16,6 @@ public class leetcode_1380 {
                     minCol = j;
                 }
             }
-
-            // check if minVal is also max in its column
             boolean isLucky = true;
             for (int k = 0; k < r; k++) {
                 if (matrix[k][minCol] > minVal) {
