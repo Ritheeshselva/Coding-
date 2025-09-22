@@ -6,4 +6,4 @@ public class leetcode_169 {
          int n = nums.length;
          return nums[n/2];
     }
-}
+}q
