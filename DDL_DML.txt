@@ -1,0 +1,42 @@
+CREATE TABLE test
+(
+id number(3),
+name varchar2(20),
+dept varchar2(20)
+);
+
+INSERT INTO  test values (1,'RRR','IT');
+
+select * from test;
+
+INSERT INTO test values(&id,'&name','&dep');
+
+select * from test;
+
+select id from test;
+select id from test where id>3;
+
+select id,name from test where id>2;
+
+select id AS "User_Id" from test where id>4;
+
+desc test;
+
+ALTER table test ADD age number(2);
+
+alter table test Rename column age to std_age;
+
+select * from test;
+
+rename test to testdb;
+
+update testdb set std_age=20 where id=1;
+
+update testdb set name='ravi',std_age=21 where id=2;
+update testdb set std_age=21 where id=3;
+update testdb set std_age=21 where id=4;
+update testdb set std_age=21 where id=5;
+
+select * from testdb;
+delete from testdb where id=5;
+select * from testdb;
