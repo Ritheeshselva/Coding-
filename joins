@@ -1,0 +1,64 @@
+create table emp1 (
+emp_id number(3),
+job varchar2(20),
+salary number(10),
+dept_id number(10),
+manager_id number(10)
+);
+
+create table dept(
+dept_id number(10),
+dept_name varchar2(20),
+location varchar2(20)
+);
+
+
+create table project(
+project_id number(10),
+project_name varchar2(20),
+dept_id number(10)
+);
+
+INSERT INTO emp1 VALUES (101, 'MANAGER', 80000, 10, NULL);
+INSERT INTO emp1 VALUES (102, 'CLERK',   30000, 10, 101);
+INSERT INTO emp1 VALUES (103, 'ANALYST', 60000, 20, 101);
+INSERT INTO emp1 VALUES (104, 'DEVELOPER',55000, 20, 103);
+INSERT INTO emp1 VALUES (105, 'HR', 40000, 30, 101);
+INSERT INTO emp1 VALUES (106, 'TESTER',  45000, 20, 103);
+INSERT INTO emp1 VALUES (107, 'SUPPORT', 35000, NULL, NULL);
+INSERT INTO emp1 VALUES (108, 'INTERN',  20000, 40, 105);
+
+INSERT INTO dept VALUES (10, 'ADMIN', 'CHENNAI');
+INSERT INTO dept VALUES (20, 'IT', 'BANGALORE');
+INSERT INTO dept VALUES (30, 'HR', 'HYDERABAD');
+INSERT INTO dept VALUES (40, 'SALES', 'DELHI');
+INSERT INTO dept VALUES (50, 'FINANCE', 'MUMBAI');
+
+
+INSERT INTO project VALUES (1001, 'ERP', 20);
+INSERT INTO project VALUES (1002, 'PAYROLL', 30);
+INSERT INTO project VALUES (1003, 'CRM', 20);
+INSERT INTO project VALUES (1004, 'WEBSITE', 40);
+
+commit;
+
+
+select * from emp1,dept,project;
+
+//Natural Join:
+
+select emp_id,job,salary from emp1 natural join dept;
+
+select emp_id,job,salary from emp1 inner join dept on emp1.dept_id=dept.dept_id where dept.location='CHENNAI';
+
+//left outer
+
+select  e.emp_id,e.job,e.salary from emp1 e,project p where e.dept_id=p.dept_id(+); 
+
+// RYT outer:
+
+select  e.emp_id,e.job,e.salary from emp1 e,project p where e.dept_id (+)=p.dept_id;
+
+
+
+
