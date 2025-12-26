@@ -1,15 +1,11 @@
-public class SingleLinkedList {
-    public class Main{ 
-    
+public class SingleLinkedList { 
     public static class node{
         int data;
         node next;
         node(int data){
             this.data=data;
         }
-        
     }
-    
     public static class linked_list{
         
         node head,tail;
@@ -50,6 +46,30 @@ public class SingleLinkedList {
             
         }
         
+        public void Del_Begin(){
+            node temp = head;
+            head=head.next;
+            temp.next=null;
+        }
+        
+        public void Del_End(){
+            node temp = head;
+            while(temp.next.next!=null){
+                temp=temp.next;
+            }
+            temp.next=null;
+            tail=temp;
+           
+        }
+        
+        public void Del_Pos(int pos){
+            node temp=head;
+            for(int i=0;i<pos-1;i++){
+                temp=temp.next;
+            }
+            temp.next=temp.next.next;
+        }
+        
         public void display(){
             node temp=head;
             while(temp!=null){
@@ -65,10 +85,15 @@ public class SingleLinkedList {
 	linked_list ll = new linked_list();
 	ll.insert_end(10);
 	ll.insert_end(20);
+	ll.insert_end(30);
+	ll.insert_end(40);
+	ll.insert_end(50);
 	ll.insert_Front(5);
 	ll.insert_SpecPos(1,15);
+	ll.Del_End();
+	ll.Del_Begin();
+	ll.Del_Pos(3);
 	ll.display();
 	
 	}
-}
 }
