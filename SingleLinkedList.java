@@ -1,4 +1,5 @@
 public class SingleLinkedList { 
+    
     public static class node{
         int data;
         node next;
@@ -70,6 +71,17 @@ public class SingleLinkedList {
             temp.next=temp.next.next;
         }
         
+        public boolean Ser(int ele){
+            node temp=head;
+            while(temp!=null){
+                if(temp.data==ele){
+                    return true;
+                }
+                temp=temp.next;
+            }
+            return false;
+        }
+        
         public void display(){
             node temp=head;
             while(temp!=null){
@@ -93,7 +105,9 @@ public class SingleLinkedList {
 	ll.Del_End();
 	ll.Del_Begin();
 	ll.Del_Pos(3);
+	System.out.print(ll.Ser(80)+" ");
 	ll.display();
 	
 	}
+
 }
