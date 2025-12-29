@@ -1,6 +1,7 @@
-public public class double_ll
+import java.util.*;
+class double_ll {
 {
-    public static class node{
+	 public static class node{
         int data;
         node next;
         node prev;
@@ -52,6 +53,31 @@ public public class double_ll
             temp.next.prev=n;
             temp.next=n;
         }
+        
+        public void del_end(){
+            node temp=head;
+            while(temp.next.next!=null){
+                temp=temp.next;
+            }
+            tail=tail.prev;
+            tail.next=null;
+            
+        }
+        
+        public void del_frnt(){
+            node temp=head;
+            head=head.next;
+            head.prev=null;
+            
+        }
+        public void del_spc_pos(int pos){
+            node temp=head;
+            for(int i=0;i<pos;i++){
+                temp=temp.next;
+            }
+           temp.prev.next = temp.next;
+           temp.next.prev = temp.prev;
+        }
         public void disp(){
             node temp=head;
             while(temp!=null){
@@ -68,6 +94,10 @@ public public class double_ll
 	    dll.insert_end(40);
 	    dll.insert_front(5);
 	    dll.insert_spc_pos(2,15);
+	    dll.del_end();
+	    dll.del_frnt();
+	    dll.del_spc_pos(1);
 	    dll.disp();
-    }
+	}
+}
 }
